@@ -1,0 +1,23 @@
+{
+  "name": "ppts",
+  "authors": [
+    "zhaofuyun <zhaofuyun202@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "mermaid": "^0.5.8"
+  }
+}
