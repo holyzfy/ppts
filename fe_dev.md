@@ -1,5 +1,5 @@
 title: 前后端分离实践
-speaker: fuyun.zhao
+speaker: 赵福运
 transition: move
 files: /style/ppt.css,/bower_components/mermaid/dist/mermaid.css,/bower_components/mermaid/dist/mermaid.min.js,/js/fe_dev.js
 theme: light
@@ -7,7 +7,8 @@ theme: light
 [slide]
 
 # 前后端分离实践
-fuyun.zhao
+------
+赵福运
 
 [slide]
 
@@ -85,7 +86,6 @@ cp -rf febu/data/development/xxx/vm/* /path/to/project/vm ## 复制模板
 
 [slide]
 
-
 ## 前后端联调
 -------
 <div class="mermaid" style="height: 300px;">
@@ -125,13 +125,13 @@ cd febu
 gulp production --repo [前端git仓库地址]
 ```
 
-剩下的事儿手工上传 :joy: ... {:.text_left.yellow}
+剩下的事儿手工上传 <i class="fa fa-smile-o"></i> ... {:.text_left.yellow}
 
 [slide style="background-color: #A200FF;"]
 
 # 基于require.js的前端开发
-
-![require.js logo](http://requirejs.org/i/logo.png)
+-------
+![logo](https://cloud.githubusercontent.com/assets/936400/14448795/9139a112-009e-11e6-9156-27ecfaa9e773.png)
 
 [slide]
 
@@ -156,7 +156,7 @@ dialog.success(message, callback);
 [slide]
 
 ## TODO {:.yellow}
-
+-------
 - 不仅仅是文件级别的模板化 {:&.fadeIn}
 - 限制变量作用域
 - 依赖管理
@@ -174,7 +174,7 @@ CommonJS | [Node.js](https://nodejs.org/en/)
 
 <br>
 
-- 咱们选这个 :point_right: [RequireJS](http://requirejs.org/) {:&.bounceIn}
+- 咱们选这个 <i class="fa fa-hand-o-right"></i> [RequireJS](http://requirejs.org/) {:&.bounceIn}
 
 [slide]
 
@@ -233,6 +233,118 @@ require(['dialog'], function(dialog) {
 </html>
 ```
 
+[slide]
 
+## 本地预览（模拟数据）
+------
 
+- velocity {:.green}
 
+    约定与vm同名的js文件作为模拟数据 {:.gray2}
+
+- ajax {:.green}
+
+    GET & POST {:.gray2}
+
+-------
+
+约定优于配置 {:.yellow}
+
+[slide]
+
+[magic data-transition="fadeIn"]
+### velocity {:.green}
+------
+index.vm {:.text_left.gray2}
+
+```html
+<h1>${title}</h1>
+<ul>
+    #foreach($item in $list)
+    <li>$item</li>
+    #end
+</ul>
+<p>Today is $now()</p>
+```
+
+======
+
+### velocity {:.green}
+------
+index.js {:.text_left.gray2}
+
+```js
+module.exports = {
+    "title": "hello title",
+    "list": [
+        "one",
+        "two",
+        "three"
+    ],
+    "now": function() {
+        return (new Date).getDay();
+    }
+}
+```
+
+========
+
+### ajax {:.green}
+------
+urlmap.js {:.text_left.gray2}
+
+```js
+define(function(require) {
+    var $ = require('jquery');
+
+    var getEnv = function() {
+        var devList = ['dev.f2e.tcredit.com'];
+        var isLocal = $.inArray(location.hostname, devList) > -1;
+        return isLocal ? 'development' : 'production';
+    };
+
+    var devMap = {
+        login: 'mock/login.json'
+        // ...
+    };
+
+    var productionMap = {
+        login: '/api/login'
+        // ...
+    };
+
+    return getEnv() === 'development' ? devMap : productionMap;
+});
+```
+
+===========
+
+### ajax {:.green}
+-----
+demo_module.js {:.text_left.gray2}
+
+```js
+define(function(require) {
+    var $ = require('jquery');
+    var urlmap = require('urlmap');
+
+    $.getJSON(urlmap['login'], params, callback);
+
+    // ...
+
+});
+```
+
+[/magic]
+
+[slide]
+
+## 代码风格约定
+------
+- 文件名**（由小写字母、数字、下划线_组成）**
+- [ESLint](https://github.com/holyzfy/frontend_guidelines/issues/3#issuecomment-195674936)
+- less <i class="fa fa-long-arrow-right"></i> css
+- git分支管理策略
+
+<br>
+[<i class="fa fa-hand-o-right">frontend_guidelines</i>](https://github.com/holyzfy/frontend_guidelines)
