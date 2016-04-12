@@ -9,7 +9,7 @@
     "node"
   ],
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://github.com/holyzfy/ppts",
   "ignore": [
     "**/.*",
     "node_modules",

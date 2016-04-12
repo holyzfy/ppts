@@ -6,8 +6,9 @@
 
 ## 安装
 
+0. `npm install -g nodeppt`
+0. `npm install -g bower`
 0. `bower install`
-0. `sudo npm i -g nodeppt`
 
 ## 使用
 
