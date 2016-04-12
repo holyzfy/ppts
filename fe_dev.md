@@ -348,3 +348,9 @@ define(function(require) {
 
 <br>
 [<i class="fa fa-hand-o-right">frontend_guidelines</i>](https://github.com/holyzfy/frontend_guidelines)
+
+[slide]
+
+# Q & A
+------
+<i class="fa fa-question-circle fa-5x green"></i>
