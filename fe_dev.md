@@ -61,11 +61,11 @@ theme: light
  - vm: 约定与模板文件同名的js文件为假数据
  - ajax: mock/path/to/xxx.json
 
-[slide]
+[slide data-on-enter="renderGraph"]
 
 ## 后端本地测试
 --------
-<div class="mermaid" style="height: 300px;">
+<div class="_todo" style="height: 300px;">
 graph LR
     git(前端git仓库) --> febu((febu))
     febu --> vm[vm/*]
@@ -84,11 +84,11 @@ cp -rf febu/data/development/xxx/static/* /path/to/local_nginx ## 复制静态�
 cp -rf febu/data/development/xxx/vm/* /path/to/project/vm ## 复制模板
 ```
 
-[slide]
+[slide data-on-enter="renderGraph"]
 
 ## 前后端联调
 -------
-<div class="mermaid" style="height: 300px;">
+<div class="_todo" style="height: 300px;">
 graph LR
     git(前端git仓库) --> febu((febu))
     febu --> vm[vm/*]
@@ -105,11 +105,11 @@ gulp development --repo [前端git仓库地址]
 rsync -vrtopg --progress febu/data/development/xxx/static/* user@10.xxx.xxx.28:/data/static/f2e/xxx
 ```
 
-[slide]
+[slide data-on-enter="renderGraph"]
 
 ## 上线
 ------
-<div class="mermaid" style="height: 300px;">
+<div class="_todo" style="height: 300px;">
 graph LR
     git(前端git仓库) --> febu((febu))
     febu --> vm[vm/*]
